@@ -8,10 +8,12 @@ class Form extends Component {
             title: "",
             author: "",
             pages: '',
-            read: false
-            
+            read: false,
+            library: [],
         }
+        
     }
+    
 
     HandleChange(e) {
         this.setState({
@@ -26,6 +28,11 @@ class Form extends Component {
     }
 
 
+    handleSubmit() {
+        this.setState({
+            library: this.state 
+        })
+    }
 
 
 
@@ -53,7 +60,7 @@ class Form extends Component {
             />
             Read?
             <input type="checkbox" name="read" onChange={(e) => this.HandleCheck(e)} />
-            <button>Submit</button>
+            <button onClick ={(e) => {this.handleSubmit(e)}}>Submit</button>
           </div>
         );
     }
