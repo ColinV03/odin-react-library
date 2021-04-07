@@ -1,3 +1,22 @@
+# The Odin Project Library App!    
+
+This project is based off of the project you can find here: [Library Project](https://theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/library)
+
+
+## Objectives: 
+1. Read more. 
+2. Build a library app to be able to prove I've read more. 
+3. Read more. 
+4. Demonstrate capability with forms and data inputs. 
+
+
+### Notes: 
+
+Project would be made in React instead of Vanilla JS. Note: at the time of factoring, class components are being deprecated soon, so a refactor with hooks would be pertinent for LTS.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
