@@ -5,7 +5,7 @@ class Form extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        book:{
+        book:{ 
           title: "",
           author: "",
           pages: '',
@@ -13,11 +13,11 @@ class Form extends Component {
           },
           library: [],
         }
-        
+      this.handleChange = this.handleChange.bind(this);
     }
     
 //general handler for changes, using Event target and defining based off of name, to update whichever key:value pair is currently being modified.
-  HandleChange(e) {
+  handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -25,7 +25,7 @@ class Form extends Component {
   
 
 //checkbox specific check for read input to be able to be addressed. 
-    HandleCheck(e) {
+    handleCheck(e) {
         this.setState({
           read: !this.state.read,
         });
@@ -45,7 +45,15 @@ class Form extends Component {
 
   render() {
     // visualized uses the JSX features to be able to store the return values of the map method results on the array within the localized state. 
-    const visualized = this.state.library.map(e => { return (<p>{e.title}</p>) });
+    const visualized = this.state.library.map(e => { return (
+      <div>
+        <h1>Book: {e.title}</h1>
+        <h2>Author: {e.author}</h2>
+        <h4>Pages: {e.pages}</h4>
+        <h3>{e.read ? " You've Read This" : " Haven't Completed Yet!"}</h3>
+      </div>
+    );
+    });
 
 
     //testing purposes
@@ -58,23 +66,23 @@ class Form extends Component {
               <input
                 placeholder={"Title"}
                 name="title"
-                onChange={(e) => this.HandleChange(e)}
+                onChange={(e) => this.handleChange(e)}
               />
               <input
                 placeholder={"Author"}
                 name="author"
-                onChange={(e) => this.HandleChange(e)}
+                onChange={(e) => this.handleChange(e)}
               />
               <input
                 placeholder={"Pages"}
                 name="pages"
-                onChange={(e) => this.HandleChange(e)}
+                onChange={(e) => this.handleChange(e)}
               />
               Read?
               <input
                 type="checkbox"
                 name="read"
-                onChange={(e) => this.HandleCheck(e)}
+                onChange={(e) => this.handleCheck(e)}
               />
               <button
                 onClick={(e) => {
