@@ -46,11 +46,11 @@ class Form extends Component {
   render() {
     // visualized uses the JSX features to be able to store the return values of the map method results on the array within the localized state. 
     const visualized = this.state.library.map(e => { return (
-      <div>
-        <h1>Book: {e.title}</h1>
-        <h2>Author: {e.author}</h2>
-        <h4>Pages: {e.pages}</h4>
-        <h3>{e.read ? " You've Read This" : " Haven't Completed Yet!"}</h3>
+      <div className="bookCard">
+        <h3>Book: {e.title}</h3>
+        <p>Author: {e.author}</p>
+        <p>Pages: {e.pages}</p>
+        <p>{e.read ? " You've Read This" : " Haven't Completed Yet!"}</p>
       </div>
     );
     });

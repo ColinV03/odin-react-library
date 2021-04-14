@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+
+.bookCard{
+  display: inline-block;
+  padding: 10px;
+  font-size: 22px;
+  text-align: left;
+
+}
