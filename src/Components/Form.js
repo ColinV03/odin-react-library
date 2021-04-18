@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import BookCard from "./BookCard"
 
 
 class Form extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
+      state = {
         book:{ 
           title: "",
           author: "",
@@ -13,11 +12,9 @@ class Form extends Component {
           },
           library: [],
         }
-      this.handleChange = this.handleChange.bind(this);
-    }
     
 //general handler for changes, using Event target and defining based off of name, to update whichever key:value pair is currently being modified.
-  handleChange(e) {
+  handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -25,7 +22,7 @@ class Form extends Component {
   
 
 //checkbox specific check for read input to be able to be addressed. 
-    handleCheck(e) {
+    handleCheck = (e) => {
         this.setState({
           read: !this.state.read,
         });
@@ -45,14 +42,15 @@ class Form extends Component {
 
   render() {
     // visualized uses the JSX features to be able to store the return values of the map method results on the array within the localized state. 
-    const visualized = this.state.library.map(e => { return (
-      <div className="bookCard">
-        <h3>Book: {e.title}</h3>
-        <p>Author: {e.author}</p>
-        <p>Pages: {e.pages}</p>
-        <p>{e.read ? " You've Read This" : " Haven't Completed Yet!"}</p>
-      </div>
-    );
+    const visualized = this.state.library.map(e => {
+      const { title, author, pages, read } = e;
+      return (
+        <BookCard 
+          title={title} 
+          author={author}
+          pages={pages} 
+          read={read}/>
+      );
     });
 
 
