@@ -9,8 +9,9 @@ class Form extends Component {
           author: "",
           pages: '',
           read: false,
+          key: 0
           },
-          library: [],
+        library: [],
         }
     
 //general handler for changes, using Event target and defining based off of name, to update whichever key:value pair is currently being modified.
@@ -31,25 +32,43 @@ class Form extends Component {
 //pushing the object to a list in the array held within state. 
   handleSubmit(e) {
     e.preventDefault();
-        this.setState({
-            library: [...this.state.library, this.state]
+    this.setState({
+          title: "",
+          author: "",
+          pages: '',
+          read: false,
+          key: 0,
+          library: [...this.state.library, this.state]
         })
     }
 
-
+  // changeReadStatus(index) {
+  //   let bookshelf = [...this.state.library]
+  //   console.log(bookshelf[index])
+    
+    
+  // }
 
 
 
   render() {
     // visualized uses the JSX features to be able to store the return values of the map method results on the array within the localized state. 
-    const visualized = this.state.library.map(e => {
-      const { title, author, pages, read } = e;
+    
+    const { library } = this.state;
+    const visualized = library.map((book, index) => {
+     
       return (
-        <BookCard 
-          title={title} 
-          author={author}
-          pages={pages} 
-          read={read}/>
+        <BookCard
+          
+          title={book.title} 
+          author={book.author}
+          pages={book.pages} 
+          read={book.read}
+          index={index}
+          key={index}
+          changeReadStatus={this.changeReadStatus}
+          // changeReadStatus={this.changeReadStatus}
+          />
       );
     });
 
@@ -65,23 +84,27 @@ class Form extends Component {
                 placeholder={"Title"}
                 name="title"
                 onChange={(e) => this.handleChange(e)}
-              />
+                value={this.state.title}
+              /><br />
               <input
                 placeholder={"Author"}
                 name="author"
                 onChange={(e) => this.handleChange(e)}
-              />
+                value={this.state.author}
+              /><br />
               <input
                 placeholder={"Pages"}
                 name="pages"
                 onChange={(e) => this.handleChange(e)}
-              />
+                value={this.state.pages}
+              /><br />
               Read?
               <input
                 type="checkbox"
                 name="read"
                 onChange={(e) => this.handleCheck(e)}
-              />
+                value={this.state.read}
+              /><br />
               <button
                 onClick={(e) => {
                   this.handleSubmit(e);
