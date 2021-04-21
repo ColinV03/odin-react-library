@@ -46,6 +46,9 @@ class Form extends Component {
   changeReadStatus = (index, library) => {
     let target = library[index]
     target.read = !target.read
+    this.setState({
+      [library[index].read]: target
+    })
     console.log(` The book to be accessed is: ${library[index].title} at location: ${library[index]} and the read status is: ${library[index].read}`)
     
   }
