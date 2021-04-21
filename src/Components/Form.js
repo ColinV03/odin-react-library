@@ -12,6 +12,7 @@ class Form extends Component {
           key: 0
           },
         library: [],
+        completed: [],
         }
     
 //general handler for changes, using Event target and defining based off of name, to update whichever key:value pair is currently being modified.
@@ -42,12 +43,24 @@ class Form extends Component {
         })
     }
 
-  // changeReadStatus(index) {
-  //   let bookshelf = [...this.state.library]
-  //   console.log(bookshelf[index])
+  changeReadStatus = (index, library) => {
+    let target = library[index]
+    target.read = !target.read
+    console.log(` The book to be accessed is: ${library[index].title} at location: ${library[index]} and the read status is: ${library[index].read}`)
     
+  }
+
+  deleteBook = (index, library) => {
+    let copiedLibrary = [...library];
+    let completedItem = copiedLibrary.splice(index, 1);
+    this.setState({
+      library: [...copiedLibrary],
+      completed: [...this.state.completed, completedItem],
+    });
+
+    console.log(`The Book to be deleted is: ${library[index].title}`)
     
-  // }
+  }
 
 
 
@@ -66,8 +79,10 @@ class Form extends Component {
           read={book.read}
           index={index}
           key={index}
+          library={library}
           changeReadStatus={this.changeReadStatus}
-          // changeReadStatus={this.changeReadStatus}
+          deleteBook={this.deleteBook}
+      
           />
       );
     });
